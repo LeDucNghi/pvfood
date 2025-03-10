@@ -87,4 +87,5 @@ export interface OrderListResponse {
   orderDetails: Product[];
   SaleChannelName: string;
 }
+
 export interface OrderDetailResponse {}
