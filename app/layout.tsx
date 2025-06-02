@@ -5,6 +5,7 @@ import { Montserrat } from "next/font/google";
 import PageTransition from "./components/commons/wrapper/page-transition";
 import ReactLenis from "lenis/react";
 import SWRConfigWrapper from "./components/commons/wrapper/swr-config";
+import { ThemeProvider } from "./components/commons/providers/theme-provider";
 
 const montserrat = Montserrat({
   variable: "--font-geist-sans",
@@ -24,11 +25,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${montserrat.variable} antialiased`}>
-        <PageTransition>
-          <SWRConfigWrapper>
-            <ReactLenis root>{children}</ReactLenis>
-          </SWRConfigWrapper>
-        </PageTransition>
+        <ThemeProvider>
+          <PageTransition>
+            <SWRConfigWrapper>
+              <ReactLenis root>{children}</ReactLenis>
+            </SWRConfigWrapper>
+          </PageTransition>
+        </ThemeProvider>
       </body>
     </html>
   );
