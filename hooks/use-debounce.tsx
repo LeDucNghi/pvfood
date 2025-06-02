@@ -8,9 +8,7 @@ export function useDebounce({ time }: IuseDebounceProps) {
   const [show, setShow] = React.useState(false);
 
   React.useEffect(() => {
-    let timer;
-
-    timer = setTimeout(() => {
+    const timer = setTimeout(() => {
       setShow(true);
     }, time);
 

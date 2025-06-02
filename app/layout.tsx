@@ -1,17 +1,13 @@
 import "../public/styles/index.scss";
 
-import { Geist, Geist_Mono } from "next/font/google";
-
 import type { Metadata } from "next";
+import { Montserrat } from "next/font/google";
+import PageTransition from "./components/commons/wrapper/page-transition";
 import ReactLenis from "lenis/react";
+import SWRConfigWrapper from "./components/commons/wrapper/swr-config";
 
-const geistSans = Geist({
+const montserrat = Montserrat({
   variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
   subsets: ["latin"],
 });
 
@@ -27,10 +23,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        <ReactLenis root>{children}</ReactLenis>
+      <body className={`${montserrat.variable} antialiased`}>
+        <PageTransition>
+          <SWRConfigWrapper>
+            <ReactLenis root>{children}</ReactLenis>
+          </SWRConfigWrapper>
+        </PageTransition>
       </body>
     </html>
   );
